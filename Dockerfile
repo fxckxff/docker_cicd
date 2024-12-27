@@ -2,7 +2,7 @@
 FROM nginx:alpine
 
 # Копируем файл index.html в папку, которая будет обслуживаться Nginx
-COPY index.html /usr/share/nginx/html/index.html
+COPY . /app
 
 # Открываем порт 80 для доступа к веб-странице
 EXPOSE 80
