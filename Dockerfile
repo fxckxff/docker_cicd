@@ -1,10 +1,9 @@
-FROM python:3.11-slim
+# Используем официальный образ Nginx
+FROM nginx:alpine
 
-WORKDIR /app
+# Копируем файл index.html в папку, которая будет обслуживаться Nginx
+COPY index.html /usr/share/nginx/html/index.html
 
-COPY requirements.txt .
-RUN pip install -r requirements.txt
+# Открываем порт 80 для доступа к веб-странице
+EXPOSE 80
 
-COPY . .
-
-CMD ["python", "app.py"]
