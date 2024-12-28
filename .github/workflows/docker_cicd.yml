@@ -4,6 +4,10 @@ on:
   push:
     branches:
       - main
+  pull_request:
+    branches:
+      - main  # Проверка при открытии PR в ветку main
+
 
 jobs:
   build-and-deploy:
@@ -29,7 +33,9 @@ jobs:
 
       - name: Deploy Docker Container (Optional if deploying remotely)
         run: |
-          docker stop my-running-container || true
-          docker rm my-running-container || true
-          docker run -d -p 8080:80 --name my-running-container ${{ secrets.DOCKER_USERNAME }}/my-app:latest
+          docker stop docker-cicd || true
+          docker rm docker-cicd || true
+          docker rmi fxckxff/my-app:latest || true
+          docker pull fxckxff/my-app:latest
+          docker run -d -p 8080:80 --name docker-cicd fxckxff/my-app:latest
 
