@@ -38,4 +38,3 @@ jobs:
           docker rmi fxckxff/my-app:latest || true
           docker pull fxckxff/my-app:latest
           docker run -d -p 8080:80 --name docker-cicd fxckxff/my-app:latest
-
